@@ -1,0 +1,63 @@
+================================================================================
+                       DSA VISUALIZER & MANAGER
+================================================================================
+
+1. WHAT IS THIS PROJECT?
+--------------------------------------------------------------------------------
+The DSA Visualizer & Manager is a comprehensive college-level pedagogical tool 
+designed to bridge the gap between theoretical Data Structures & Algorithms and 
+their practical, real-time memory execution. By heavily utilizing interactive 
+animations and pseudo-code tracing, this application allows students to "see" 
+inside the computer's memory while standard algorithmic operations occur.
+
+2. FEATURES IMPLEMENTED (WHAT IS DONE)
+--------------------------------------------------------------------------------
+* Stack Visualizer:
+  - LIFO (Last In First Out) operations: push(), pop(), peek().
+  - Live C++ pseudo-code highlighting during execution.
+  - Exception handling for Stack Overflow and Stack Underflow.
+
+* Queue Visualizer:
+  - FIFO (First In First Out) linear operations: enqueue(), dequeue().
+  - Dynamic `front` and `rear` pointer tracking.
+  - Animated data shifts matching C++ paradigms.
+
+* Binary Min-Heap Visualizer:
+  - Tree-to-Array representation.
+  - Visualized Heapify Up (Insert) and Heapify Down (Extract Min).
+  - Priority Queue simulation.
+
+* Memory & Execution Simulator:
+  - Call Stack: Simulates recursive function frames, local variables, and Stack Overflows.
+  - Heap Memory: Demonstrates `new / malloc()` dynamic allocation and `delete / free()`.
+  - Visualizes untracked pointers (Memory Leaks) and Garbage Collection (Mark & Sweep).
+
+* Custom Code Runner (Backend Trace):
+  - Accepts custom algorithmic code and steps through it line-by-line.
+  - Safely evaluates expressions in a sandboxed environment.
+  - Extracts the backend AST (Abstract Syntax Tree) state to display the Global Scope, 
+    Function Frames, and live variable mutations in real-time memory blocks.
+
+
+3. HOW IT WORKS (TECHNICAL ARCHITECTURE)
+--------------------------------------------------------------------------------
+* Frontend Architecture: 
+  The application is built using React with TypeScript and Vite for rapid module 
+  bundling. The UI is styled with Tailwind CSS for a modern, responsive layout, 
+  while Framer Motion handles the complex physics-based spring animations for 
+  the data structures.
+
+* State Management: 
+  Shared states (like animation speed, playback controls, and theme preferences) 
+  are managed globally via Zustand. This prevents unnecessary component re-renders 
+  and keeps the application memory footprint low.
+
+* Execution Tracing (Code Sandbox): 
+  For the custom code trace, the application uses `js-interpreter`. Instead of 
+  relying on the browser's native JavaScript engine (which runs too fast to track 
+  and doesn't expose internal memory states), the app wraps the user's code in a 
+  virtual machine sandbox. By calling step-by-step methods, the app halts the 
+  execution pipeline thread, traverses the internal state stack, and renders the 
+  active memory scopes to the UI before proceeding.
+
+================================================================================
